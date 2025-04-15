@@ -258,8 +258,10 @@ img {
 
 .skills__container_2{
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   flex-wrap: wrap;
+  justify-content: center;
+  row-gap: 0rem;
 }
 .skills__subtitle {
   margin-bottom: var(--mb-2);
