@@ -96,6 +96,12 @@ img {
   padding-bottom: 2rem;
 }
 
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+
 /*===== LAYOUT =====*/
 .bd-grid {
   max-width: 1024px;

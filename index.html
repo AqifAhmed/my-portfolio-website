@@ -25,8 +25,8 @@
                         <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
                         <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
                         <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
-                        <li class="nav__item"><a href="#blogs" class="nav__link">Blog</a></li>
                         <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                        <li class="nav__item"><a href="/blogs/blog.html" class="nav__link">Blog</a></li>
                     </ul>
                 </div>
 
@@ -129,95 +129,6 @@
                 </div>
             </section>
 
-            <!--===== BLOGS =====-->
-
-            <section class="blog-container section" id="blogs">
-                <div class="blog-header">
-                  <h2 class="section-title">My Blog</h2>
-                  <p>Thoughts, learnings, and insights from my journey</p>
-                </div>
-                
-                <div class="blog-grid">
-                  <!-- Featured blog post -->
-                  <article class="featured-blog blog-card">
-                    <img src="assets/img/featured.png" alt="Featured blog post" class="blog-image">
-                    <div class="blog-content">
-                      <p class="blog-date">April 20, 2025</p>
-                      <h3 class="blog-title">How I completed the Etch-A-Sketch (A Odin Foundation's Project)</h3>
-                      <p class="blog-excerpt">As I navigated through the Assignment at hand, I realized that it required the understanding of DOM Manipulation, for which I went to MDN for more explanations to it. It is a simple design in which the user first enters a number for which the loop creates a grid. Those squares are colored black with opacity set to '0.1'. As soon as the mouse hovers through any block, it's opacity starts to increase and it gives a perspective how those paint applications that we have been using since childhood, work!</p>
-                      <!-- <a href="posts/future-web-development.html" class="blog-link">Read More <i class='bx bx-right-arrow-alt'></i></a> -->
-                    </div>
-                  </article>
-                  
-                  <!-- Regular blog posts -->
-                  <!-- <article class="blog-card">
-                    <img src="/api/placeholder/400/300" alt="Blog post" class="blog-image">
-                    <div class="blog-content">
-                      <p class="blog-date">April 5, 2025</p>
-                      <h3 class="blog-title">Mastering CSS Grid for Modern Layouts</h3>
-                      <p class="blog-excerpt">CSS Grid has revolutionized how we approach web layouts. Here's my complete guide to mastering this powerful tool.</p>
-                      <a href="posts/mastering-css-grid.html" class="blog-link">Read More <i class='bx bx-right-arrow-alt'></i></a>
-                    </div>
-                  </article>
-                  
-                  <article class="blog-card">
-                    <img src="/api/placeholder/400/300" alt="Blog post" class="blog-image">
-                    <div class="blog-content">
-                      <p class="blog-date">March 22, 2025</p>
-                      <h3 class="blog-title">My Journey Learning React: Tips for Beginners</h3>
-                      <p class="blog-excerpt">React continues to dominate the frontend landscape. Here are some valuable lessons I've learned while mastering this library.</p>
-                      <a href="posts/react-journey.html" class="blog-link">Read More <i class='bx bx-right-arrow-alt'></i></a>
-                    </div>
-                  </article>
-                  
-                  <article class="blog-card">
-                    <img src="/api/placeholder/400/300" alt="Blog post" class="blog-image">
-                    <div class="blog-content">
-                      <p class="blog-date">March 10, 2025</p>
-                      <h3 class="blog-title">Optimizing Website Performance: A Practical Guide</h3>
-                      <p class="blog-excerpt">Website speed matters more than ever. Discover actionable techniques to improve your site's performance and user experience.</p>
-                      <a href="posts/website-performance.html" class="blog-link">Read More <i class='bx bx-right-arrow-alt'></i></a>
-                    </div>
-                  </article> -->
-                  
-                  
-                </div>
-                
-                <!-- Pagination
-                <div class="blog-pagination">
-                  <a href="#" class="page-link active">1</a>
-                  <a href="#" class="page-link">2</a>
-                  <a href="#" class="page-link">3</a>
-                  <a href="#" class="page-link"><i class='bx bx-right-arrow-alt'></i></a>
-                </div> -->
-              </section>
-
-            <!--===== WORK =====-->
-            <!-- <section class="work section" id="work">
-                <h2 class="section-title">Work</h2>
-
-                <div class="work__container bd-grid">
-                    <a href="" class="work__img">
-                        <img src="assets/img/work1.jpg" alt="">
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work2.jpg" alt="">
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work3.jpg" alt="">
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work4.jpg" alt="">
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work5.jpg" alt="">
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work6.jpg" alt="">
-                    </a>
-                </div>
-            </section> -->
-
             <!--===== CONTACT =====-->
             <section class="contact section" id="contact">
                 <h2 class="section-title">Contact</h2>
@@ -231,6 +142,7 @@
                     </form>
                 </div>
             </section>
+
         </main>
 
         <!--===== FOOTER =====-->
@@ -249,5 +161,25 @@
 
         <!--===== MAIN JS =====-->
         <script src="assets/js/main.js"></script>
+        <script>
+            const links = document.querySelectorAll('a');
+          
+            links.forEach(link => {
+              link.addEventListener('click', function(e) {
+                const href = link.getAttribute('href');
+          
+                // Ignore links that are just '#'
+                if (href === '#' || href.startsWith('#')) return;
+          
+                e.preventDefault(); // Stop immediate navigation
+                document.body.classList.add('fade-out');
+          
+                setTimeout(() => {
+                  window.location.href = href;
+                }, 500); // Wait for the fade-out animation to finish
+              });
+            });
+          </script>
+          
     </body>
 </html>
