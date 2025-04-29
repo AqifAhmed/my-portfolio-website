@@ -96,10 +96,24 @@ img {
   padding-bottom: 2rem;
 }
 
-.fade-out {
+.transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ffffff; /* or black depending on your theme */
+  pointer-events: none;
   opacity: 0;
   transition: opacity 0.5s ease;
+  z-index: 1000;
 }
+
+.transition.transition-active {
+  pointer-events: all;
+  opacity: 1;
+}
+
 
 
 /*===== LAYOUT =====*/

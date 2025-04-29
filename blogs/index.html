@@ -1,102 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="../assets/css/styles.css">
-        <link rel="icon" type="image/x-icon" href="../assets/img/fav.png">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- =====BOX ICONS===== -->
-        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="icon" type="image/x-icon" href="../assets/img/fav.png">
 
-        <title>Aqif Ahmed</title>
-    </head>
-    <body>
-        <!--===== HEADER =====-->
-        <header class="l-header">
-            <nav class="nav bd-grid">
-                <div>
-                    <a href="#" class="nav__logo">Aqif Ahmed</a>
-                </div>
+  <!-- =====BOX ICONS===== -->
+  <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 
-                <div class="nav__menu" id="nav-menu">
-                    <ul class="nav__list">
-                        <li class="nav__item"><a href="../" class="nav__link">Home</a></li>
-                        <li class="nav__item"><a href="#" class="nav__link active-link">Blog</a></li>
-                    </ul>
-                </div>
+  <title>Aqif Ahmed</title>
+</head>
 
-                <div class="nav__toggle" id="nav-toggle">
-                    <i class='bx bx-menu'></i>
-                </div>
-            </nav>
-        </header>
+<body>
+  <div class="transition"></div>
 
-        <main class="l-main">
-            <section class="blog-container section" id="blogs">
-                <div class="blog-header">
-                  <h2 class="section-title">My Blog</h2>
-                  <p>Thoughts, learnings, and insights from my journey</p>
-                </div>
-                
-                <div class="blog-grid">
-                  <!-- Featured blog post -->
-                  <article class="featured-blog blog-card">
-                    <img src="../assets/img/featured.png" alt="Featured blog post" class="blog-image">
-                    <div class="blog-content">
-                      <p class="blog-date">April 20, 2025</p>
-                      <h3 class="blog-title">How I completed the Etch-A-Sketch (A Odin Foundation's Project)</h3>
-                      <p class="blog-excerpt">As I navigated through the Assignment at hand, I realized that it required the understanding of DOM Manipulation, for which I went to MDN for more explanations to it. It is a simple design in which the user first enters a number for which the loop creates a grid. Those squares are colored black with opacity set to '0.1'. As soon as the mouse hovers through any block, it's opacity starts to increase and it gives a perspective how those paint applications that we have been using since childhood, work!</p>
-                      <!-- <a href="posts/future-web-development.html" class="blog-link">Read More <i class='bx bx-right-arrow-alt'></i></a> -->
-                    </div>
-                  </article>
-                  
-                  <!-- More Blogs here -->
-                </div>
-                
-                
-              </section>
+  <!--===== HEADER =====-->
+  <header class="l-header">
+    <nav class="nav bd-grid">
+      <div>
+        <a href="#" class="nav__logo">Aqif Ahmed</a>
+      </div>
 
-            
-        </main>
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="../" class="nav__link">Home</a></li>
+          <li class="nav__item"><a href="#" class="nav__link active-link">Blog</a></li>
+        </ul>
+      </div>
 
-        <!--===== FOOTER =====-->
-        <footer class="footer">
-            <p class="footer__title">Aqif Ahmed</p>
-            <div class="footer__social">
-                <a href="https://www.instagram.com/aqif._.ahmed/" target="_blank" class="footer__icon"><i class='bx bxl-instagram' ></i></a>
-                <a href="https://x.com/aqif__ahmed" target="_blank" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
-            </div>
-            <p class="footer__copy">&#169; All rigths reserved</p>
-        </footer>
+      <div class="nav__toggle" id="nav-toggle">
+        <i class='bx bx-menu'></i>
+      </div>
+    </nav>
+  </header>
+
+  <main class="l-main">
+    <section class="blog-container section" id="blogs">
+      <div class="blog-header">
+        <h2 class="section-title">My Blog</h2>
+        <p>Thoughts, learnings, and insights from my journey</p>
+      </div>
+
+      <div class="blog-grid">
+        <!-- Featured blog post -->
+        <article class="featured-blog blog-card">
+          <img src="../assets/img/featured.png" alt="Featured blog post" class="blog-image">
+          <div class="blog-content">
+            <p class="blog-date">April 20, 2025</p>
+            <h3 class="blog-title">How I completed the Etch-A-Sketch (A Odin Foundation's Project)</h3>
+            <p class="blog-excerpt">As I navigated through the Assignment at hand, I realized that it required the
+              understanding of DOM Manipulation, for which I went to MDN for more explanations to it. It is a simple
+              design in which the user first enters a number for which the loop creates a grid. Those squares are
+              colored black with opacity set to '0.1'. As soon as the mouse hovers through any block, it's opacity
+              starts to increase and it gives a perspective how those paint applications that we have been using since
+              childhood, work!</p>
+            <!-- <a href="posts/future-web-development.html" class="blog-link">Read More <i class='bx bx-right-arrow-alt'></i></a> -->
+          </div>
+        </article>
+
+        <!-- More Blogs here -->
+      </div>
 
 
-        <!--===== SCROLL REVEAL =====-->
-        <script src="https://unpkg.com/scrollreveal"></script>
+    </section>
 
-        <!--===== MAIN JS =====-->
-        <script src="assets/js/main.js"></script>
 
-        <script>
-            const links = document.querySelectorAll('a');
-          
-            links.forEach(link => {
-              link.addEventListener('click', function(e) {
-                const href = link.getAttribute('href');
-          
-                // Ignore links that are just '#'
-                if (href === '#' || href.startsWith('#')) return;
-          
-                e.preventDefault(); // Stop immediate navigation
-                document.body.classList.add('fade-out');
-          
-                setTimeout(() => {
-                  window.location.href = href;
-                }, 500); // Wait for the fade-out animation to finish
-              });
-            });
-          </script>
-          
-    </body>
+  </main>
+
+  <!--===== FOOTER =====-->
+  <footer class="footer">
+    <p class="footer__title">Aqif Ahmed</p>
+    <div class="footer__social">
+      <a href="https://www.instagram.com/aqif._.ahmed/" target="_blank" class="footer__icon"><i
+          class='bx bxl-instagram'></i></a>
+      <a href="https://x.com/aqif__ahmed" target="_blank" class="footer__icon"><i class='bx bxl-twitter'></i></a>
+    </div>
+    <p class="footer__copy">&#169; All rigths reserved</p>
+  </footer>
+
+
+  <!--===== SCROLL REVEAL =====-->
+  <script src="https://unpkg.com/scrollreveal"></script>
+
+  <!--===== MAIN JS =====-->
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    // Wait for the DOM to fully load
+    document.addEventListener("DOMContentLoaded", () => {
+      const transitionElement = document.querySelector('.transition');
+      const anchors = document.querySelectorAll('a');
+
+      // Play the entrance animation when the page loads
+      transitionElement.classList.add('transition-active');
+
+      // Remove the entrance animation after it ends
+      transitionElement.addEventListener('animationend', () => {
+        transitionElement.classList.remove('transition-active');
+      });
+
+      // For every link clicked
+      anchors.forEach(anchor => {
+        anchor.addEventListener('click', e => {
+          const target = anchor.getAttribute('href');
+
+          // Check if it's an internal link (not starting with http, mailto, etc.)
+          if (target && !anchor.target && !target.startsWith('http') && !target.startsWith('mailto')) {
+            e.preventDefault(); // Stop immediate navigation
+
+            transitionElement.classList.add('transition-active'); // Start exit animation
+
+            // After animation, actually change page
+            transitionElement.addEventListener('animationend', () => {
+              window.location.href = target;
+            }, { once: true }); // Only trigger once to avoid multiple calls
+          }
+        });
+      });
+    });
+
+  </script>
+
+</body>
+
 </html>
