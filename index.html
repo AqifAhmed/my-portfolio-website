@@ -178,50 +178,6 @@
 
     <!--===== MAIN JS =====-->
     <script src="assets/js/main.js"></script>
-    <script>
-        // Wait for the DOM to fully load
-        document.addEventListener("DOMContentLoaded", () => {
-            const transitionElement = document.querySelector('.transition');
-            const anchors = document.querySelectorAll('a');
-
-            // Play the entrance animation when the page loads
-            transitionElement.classList.add('transition-active');
-
-            // Remove the entrance animation after it ends
-            transitionElement.addEventListener('animationend', () => {
-                transitionElement.classList.remove('transition-active');
-            });
-
-            // For every link clicked
-            anchors.forEach(anchor => {
-                anchor.addEventListener('click', e => {
-                    const target = anchor.getAttribute('href');
-
-                    // Check if it's an internal link (not starting with http, mailto, etc.)
-                    if (target && !anchor.target && !target.startsWith('http') && !target.startsWith('mailto')) {
-                        e.preventDefault(); // Stop immediate navigation
-
-                        transitionElement.classList.add('transition-active'); // Start exit animation
-
-                        // After animation, actually change page
-                        transitionElement.addEventListener('animationend', () => {
-                            window.location.href = target;
-                        }, { once: true }); // Only trigger once to avoid multiple calls
-                    }
-                });
-            });
-        });
-
-
-        window.addEventListener('load', () => {
-            const transitionElement = document.querySelector('.transition');
-            if (transitionElement) {
-                transitionElement.style.display = 'none';
-            }
-        });
-
-
-    </script>
 
 </body>
 
