@@ -1,15 +1,22 @@
 /*===== GOOGLE FONTS =====*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 /*===== VARIABLES CSS =====*/
+/* Light theme (default) – semantic tokens */
 :root {
   --header-height: 3rem;
   --font-semi: 600;
-  /*===== Colores =====*/
-  /*Purple 260 - Red 355 - Blue 224 - Pink 340*/
-  /* HSL color mode */
+  /* Theme: Light Mode */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --text-primary: hsl(224, 56%, 12%);
+  --text-secondary: #64748b;
+  --accent: hsl(224, 89%, 60%);
+  --accent-hover: hsl(224, 89%, 50%);
+  --border: #e2e8f0;
+  /* Legacy aliases (map to theme) */
   --hue-color: 224;
-  --first-color: hsl(var(--hue-color), 89%, 60%);
-  --second-color: hsl(var(--hue-color), 56%, 12%);
+  --first-color: var(--accent);
+  --second-color: var(--text-primary);
   /*===== Fuente y tipografia =====*/
   --body-font: "Poppins", sans-serif;
   --big-font-size: 2rem;
@@ -24,6 +31,109 @@
   /*===== z index =====*/
   --z-back: -10;
   --z-fixed: 100;
+}
+
+/* Dark theme override – single source of truth */
+[data-theme="dark"] {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --accent: #6366f1;
+  --accent-hover: #818cf8;
+  --border: #334155;
+  --first-color: var(--accent);
+  --second-color: var(--bg-secondary);
+}
+
+/* Dark mode: soften images to prevent harsh contrast */
+[data-theme="dark"] img {
+  filter: brightness(0.85);
+}
+
+/* ===== DARK MODE: EXPLICIT COLOR OVERRIDES ===== */
+/* Buttons & Accents - Electric Indigo with white text */
+[data-theme="dark"] .button,
+[data-theme="dark"] button.button,
+[data-theme="dark"] .contact__button,
+[data-theme="dark"] a.button {
+  background-color: var(--accent);
+  color: #ffffff;
+  font-weight: var(--font-semi);
+}
+[data-theme="dark"] .button:hover,
+[data-theme="dark"] button.button:hover,
+[data-theme="dark"] .contact__button:hover,
+[data-theme="dark"] a.button:hover {
+  background-color: var(--accent-hover);
+  color: #ffffff;
+}
+
+/* Headings - Electric Indigo for prominence */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3 {
+  color: #818cf8;
+}
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+  color: var(--text-primary);
+}
+[data-theme="dark"] .home__title {
+  color: var(--text-primary);
+}
+[data-theme="dark"] .home__title-color {
+  color: var(--accent);
+}
+[data-theme="dark"] .section-title {
+  color: var(--accent);
+}
+[data-theme="dark"] .about__subtitle,
+[data-theme="dark"] .skills__subtitle {
+  color: #818cf8;
+}
+
+/* Image containers - Transparent or dark background */
+[data-theme="dark"] .home__img,
+[data-theme="dark"] .about__img,
+[data-theme="dark"] .skills__img {
+  background-color: transparent;
+}
+[data-theme="dark"] .home__blob {
+  fill: var(--accent);
+}
+[data-theme="dark"] .about__img img,
+[data-theme="dark"] .skills__img img,
+[data-theme="dark"] .home__blob-img {
+  filter: brightness(0.85);
+}
+
+/* ===== DARK MODE: BLOG PAGE STYLES ===== */
+[data-theme="dark"] .blog-card {
+  background-color: var(--bg-secondary);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+[data-theme="dark"] .blog-card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+[data-theme="dark"] .blog-date {
+  color: var(--text-secondary);
+}
+[data-theme="dark"] .blog-title {
+  color: var(--text-primary);
+}
+[data-theme="dark"] .blog-excerpt {
+  color: var(--text-secondary);
+}
+[data-theme="dark"] .blog-link {
+  color: var(--accent);
+}
+[data-theme="dark"] .blog-link:hover {
+  color: var(--accent-hover);
+}
+[data-theme="dark"] .blog-header p {
+  color: var(--text-secondary);
 }
 @media screen and (min-width: 968px) {
   :root {
@@ -47,7 +157,8 @@ body {
   margin: var(--header-height) 0 0 0;
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
-  color: var(--second-color);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
 }
 
 h1, h2, p {
@@ -74,7 +185,7 @@ img {
 .section-title {
   position: relative;
   font-size: var(--h2-font-size);
-  color: var(--first-color);
+  color: var(--accent);
   margin-top: var(--mb-2);
   margin-bottom: var(--mb-4);
   text-align: center;
@@ -88,7 +199,7 @@ img {
   right: 0;
   margin: auto;
   top: 2rem;
-  background-color: var(--first-color);
+  background-color: var(--accent);
 }
 
 .section {
@@ -102,7 +213,7 @@ img {
   left: 0;
   right: 0;
   bottom: 0;
-  background: #ffffff; /* or black depending on your theme */
+  background: var(--bg-primary);
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.5s ease;
@@ -130,8 +241,11 @@ img {
   top: 0;
   left: 0;
   z-index: var(--z-fixed);
-  background-color: #fff;
+  background-color: var(--bg-primary);
   box-shadow: 0 1px 4px rgba(146, 161, 176, 0.15);
+}
+[data-theme="dark"] .l-header {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
 
 /*===== NAV =====*/
@@ -141,6 +255,7 @@ img {
   justify-content: space-between;
   align-items: center;
   font-weight: var(--font-semi);
+  position: relative;
 }
 @media screen and (max-width: 767px) {
   .nav__menu {
@@ -150,8 +265,10 @@ img {
     width: 80%;
     height: 100%;
     padding: 2rem;
-    background-color: var(--second-color);
+    background-color: var(--bg-secondary);
     transition: 0.5s;
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 .nav__item {
@@ -159,7 +276,15 @@ img {
 }
 .nav__link {
   position: relative;
-  color: #fff;
+  color: var(--text-primary);
+}
+@media screen and (max-width: 767px) {
+  .nav__link {
+    color: #fff;
+  }
+  [data-theme="dark"] .nav__link {
+    color: var(--text-primary);
+  }
 }
 .nav__link:hover {
   position: relative;
@@ -171,15 +296,78 @@ img {
   height: 0.18rem;
   left: 0;
   top: 2rem;
-  background-color: var(--first-color);
+  background-color: var(--accent);
 }
 .nav__logo {
-  color: var(--second-color);
+  color: var(--text-primary);
 }
 .nav__toggle {
-  color: var(--second-color);
+  color: var(--text-primary);
   font-size: 1.5rem;
   cursor: pointer;
+}
+
+/* Theme toggle – circular, far right */
+.nav__right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+@media screen and (min-width: 768px) {
+  .nav__right {
+    position: absolute;
+    right: 0;
+  }
+}
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: color 0.25s ease, background-color 0.25s ease, transform 0.2s ease;
+}
+.theme-toggle:hover {
+  color: var(--accent);
+  background-color: var(--bg-secondary);
+}
+.theme-toggle:active {
+  transform: scale(0.96);
+}
+.theme-toggle__icon {
+  font-size: 1.35rem;
+  transition: transform 0.3s ease;
+  display: none;
+}
+/* Strict icon visibility: Light Mode - Hide Sun, Show Moon */
+body:not([data-theme="dark"]) .theme-toggle__icon--light,
+html:not([data-theme="dark"]) .theme-toggle__icon--light,
+[data-theme="light"] .theme-toggle__icon--light {
+  display: none !important;
+}
+body:not([data-theme="dark"]) .theme-toggle__icon--dark,
+html:not([data-theme="dark"]) .theme-toggle__icon--dark,
+[data-theme="light"] .theme-toggle__icon--dark {
+  display: inline-block !important;
+}
+/* Strict icon visibility: Dark Mode - Hide Moon, Show Sun */
+[data-theme="dark"] .theme-toggle__icon--dark,
+html[data-theme="dark"] .theme-toggle__icon--dark {
+  display: none !important;
+}
+[data-theme="dark"] .theme-toggle__icon--light,
+html[data-theme="dark"] .theme-toggle__icon--light {
+  display: inline-block !important;
+}
+.theme-toggle:hover .theme-toggle__icon {
+  transform: rotate(15deg);
 }
 
 /*Active menu*/
@@ -190,7 +378,7 @@ img {
   height: 0.18rem;
   left: 0;
   top: 2rem;
-  background-color: var(--first-color);
+  background-color: var(--accent);
 }
 
 /*=== Show menu ===*/
@@ -212,7 +400,7 @@ img {
   margin-bottom: var(--mb-5);
 }
 .home__title-color {
-  color: var(--first-color);
+  color: var(--accent);
 }
 .home__social {
   display: flex;
@@ -222,10 +410,10 @@ img {
   width: max-content;
   margin-bottom: var(--mb-2);
   font-size: 1.5rem;
-  color: var(--second-color);
+  color: var(--text-primary);
 }
 .home__social-icon:hover {
-  color: var(--first-color);
+  color: var(--accent);
 }
 .home__img {
   position: absolute;
@@ -234,7 +422,7 @@ img {
   width: 260px;
 }
 .home__blob {
-  fill: var(--first-color);
+  fill: var(--accent);
 }
 .home__blob-img {
   width: 500px;
@@ -243,14 +431,15 @@ img {
 /*BUTTONS*/
 .button {
   display: inline-block;
-  background-color: var(--first-color);
+  background-color: var(--accent);
   color: #fff;
   padding: 0.75rem 2.5rem;
   font-weight: var(--font-semi);
   border-radius: 0.5rem;
-  transition: 0.3s;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
 }
 .button:hover {
+  background-color: var(--accent-hover);
   box-shadow: 0px 10px 36px rgba(0, 0, 0, 0.15);
 }
 
@@ -261,6 +450,10 @@ img {
 }
 .about__subtitle {
   margin-bottom: var(--mb-2);
+  color: var(--text-primary);
+}
+.about__text {
+  color: var(--text-secondary);
 }
 .about__img {
   justify-self: center;
@@ -285,9 +478,11 @@ img {
 }
 .skills__subtitle {
   margin-bottom: var(--mb-2);
+  color: var(--text-primary);
 }
 .skills__text {
   margin-bottom: var(--mb-4);
+  color: var(--text-secondary);
 }
 .skills__data {
   display: flex;
@@ -298,16 +493,20 @@ img {
   padding: 0.5rem 1rem;
   margin-bottom: var(--mb-4);
   border-radius: 0.5rem;
+  background-color: var(--bg-secondary);
   box-shadow: 0px 4px 25px rgba(14, 36, 49, 0.15);
 }
 .skills__icon {
   font-size: 2rem;
   margin-right: var(--mb-2);
-  color: var(--first-color);
+  color: var(--accent);
 }
 .skills__names {
   display: flex;
   align-items: center;
+}
+.skills__name {
+  color: var(--text-primary);
 }
 
 .skills__img {
@@ -731,9 +930,18 @@ img {
   font-weight: var(--font-semi);
   padding: 1rem;
   border-radius: 0.5rem;
-  border: 1.5px solid var(--second-color);
+  border: 1.5px solid var(--border);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   outline: none;
   margin-bottom: var(--mb-4);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+.contact__input::placeholder {
+  color: var(--text-secondary);
+}
+.contact__input:focus {
+  border-color: var(--accent);
 }
 .contact__button {
   display: block;
@@ -752,6 +960,10 @@ img {
   font-weight: var(--font-semi);
   padding: 2rem 0;
 }
+[data-theme="dark"] .footer {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
 .footer__title {
   font-size: 2rem;
   margin-bottom: var(--mb-4);
@@ -763,9 +975,64 @@ img {
   font-size: 1.5rem;
   color: #fff;
   margin: 0 var(--mb-2);
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+.footer__icon:hover {
+  opacity: 0.85;
+}
+[data-theme="dark"] .footer__icon {
+  color: var(--text-primary);
 }
 .footer__copy {
   font-size: var(--smaller-font-size);
+  color: var(--text-secondary);
+}
+
+/* Dark theme: hero name uses accent color (no gradient) */
+[data-theme="dark"] .home__title-color.home__title-name {
+  background: none;
+  padding-bottom: 0;
+}
+
+/* ===== VIEW TRANSITION API: CIRCULAR REVEAL =====*/
+/* Enable view transitions for smooth theme switching */
+@view-transition {
+  navigation: auto;
+}
+
+/* Root transition container */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 1.5s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Disable default fade */
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+/* Circular reveal animation from top-left corner */
+::view-transition-new(root) {
+  z-index: 2;
+  animation-name: circle-expand;
+}
+
+/* Keyframes: circle expands from top-left (0, 0) */
+@keyframes circle-expand {
+  from {
+    clip-path: circle(0% at 0 0);
+  }
+  to {
+    clip-path: circle(150% at 0 0);
+  }
+}
+
+/* Fallback: smooth transition for browsers without View Transition API */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
 }
 
 /* ===== MEDIA QUERIES=====*/
@@ -843,8 +1110,19 @@ img {
   .nav__toggle {
     display: none;
   }
+  .nav__menu {
+    position: absolute;
+    left: 48%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+  }
+  .nav__list {
+    display: flex;
+    justify-content: center;
+  }
   .nav__link {
-    color: var(--second-color);
+    color: var(--text-primary);
   }
   .home {
     padding: 8rem 0 2rem;

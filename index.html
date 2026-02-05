@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script>
+      (function() {
+        var stored = localStorage.getItem("portfolio-theme");
+        var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var theme = stored || (prefersDark ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="icon" type="image/x-icon" href="assets/img/fav.png">
 
@@ -20,7 +27,7 @@
     <header class="l-header">
         <nav class="nav bd-grid">
             <div>
-                <a href="#" class="nav__logo">Aqif Ahmed</a>
+                <a href="index.html" class="nav__logo">Aqif Ahmed</a>
             </div>
 
             <div class="nav__menu" id="nav-menu">
@@ -33,8 +40,14 @@
                 </ul>
             </div>
 
-            <div class="nav__toggle" id="nav-toggle">
-                <i class='bx bx-menu'></i>
+            <div class="nav__right">
+                <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                    <i class="bx bx-sun theme-toggle__icon theme-toggle__icon--light" aria-hidden="true"></i>
+                    <i class="bx bx-moon theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true"></i>
+                </button>
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-menu'></i>
+                </div>
             </div>
         </nav>
     </header>
@@ -43,7 +56,7 @@
         <!--===== HOME =====-->
         <section class="home bd-grid" id="home">
             <div class="home__data">
-                <h1 class="home__title">Hi<br>I'm <span class="home__title-color">Aqif</span>,<br> Software Engineer
+                <h1 class="home__title">Hi<br>I'm <span class="home__title-color home__title-name">Aqif</span>,<br> Software Engineer
                 </h1>
 
                 <a href="#contact" class="button">Contact</a>
