@@ -1,3 +1,52 @@
+/*===== THEME TOGGLE =====*/
+const THEME_KEY = "portfolio-theme";
+
+/**
+ * Resolves theme: saved preference in localStorage, else system prefers-color-scheme, else "light".
+ */
+function getPreferredTheme() {
+  var stored = localStorage.getItem(THEME_KEY);
+  if (stored === "dark" || stored === "light") return stored;
+  if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) return "dark";
+  return "light";
+}
+
+/**
+ * Applies theme to document. Icon (Sun/Moon) is toggled via CSS and data-theme.
+ */
+function setTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  localStorage.setItem(THEME_KEY, theme);
+}
+
+/**
+ * Toggles theme with View Transition API (circular reveal) or fallback.
+ */
+function toggleTheme() {
+  var current = document.documentElement.getAttribute("data-theme") || "light";
+  var newTheme = current === "dark" ? "light" : "dark";
+  
+  // Check if View Transition API is supported
+  if (document.startViewTransition) {
+    document.startViewTransition(function() {
+      setTheme(newTheme);
+    });
+  } else {
+    // Fallback for browsers without View Transition API support
+    setTheme(newTheme);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Initial theme application (no transition on page load)
+  setTheme(getPreferredTheme());
+  
+  var themeToggle = document.getElementById("theme-toggle");
+  if (themeToggle) {
+    themeToggle.addEventListener("click", toggleTheme);
+  }
+});
+
 /*===== MENU SHOW =====*/ 
 const showMenu = (toggleId, navId) =>{
     const toggle = document.getElementById(toggleId),
