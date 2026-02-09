@@ -84,7 +84,7 @@
                         engines. With a strong foundation in system administration and database management, I ensure
                         that every line of code contributes to a robust and efficient architecture.</p>
 
-                    <div class="row g-3 reveal-up">
+                    <div class="row g-3 reveal-up justify-content-center">
                         <div class="col-6 col-md-4">
                             <div class="p-3 border border-secondary text-center hover-fill">
                                 <i class="fab fa-python fa-2x mb-2 text-accent"></i>
@@ -113,19 +113,13 @@
     <section id="showcase" class="py-5 position-relative">
         <div class="container py-5">
             <div class="text-center mb-5">
-                <h2 class="display-3 fw-bold reveal-up">Flagship <span class="text-accent">Project</span></h2>
+                <h2 class="display-3 fw-bold reveal-up">Latest <span class="text-accent">Blog</span></h2>
             </div>
 
-            <div class="project-card reveal-scale">
-                <div class="row g-0">
-                    <div class="col-lg-12 d-flex align-items-center bg-darker">
-                        <div class="p-5 w-100 text-center">
-                            <h3 class="h1 fw-bold mb-3">Nebula OS</h3>
-                            <p class="mb-4 text-white-50 mx-auto" style="max-width: 600px;">A revolutionary web-based
-                                operating system interface. Experience desktop-class performance in the browser.</p>
-                            <a href="#" class="btn btn-pixelated">View Case Study</a>
-                        </div>
-                    </div>
+            <div id="showcase-content" class="project-card reveal-scale">
+                <!-- Content will be injected by js/latest-blog.js -->
+                <div class="text-center">
+                    <p class="text-white-50">Loading latest blog...</p>
                 </div>
             </div>
         </div>
@@ -134,13 +128,16 @@
     <!-- Footer -->
     <footer class="py-5 border-top border-secondary">
         <div class="container text-center">
-            <img src="assets/logo.svg" alt="Æ" height="30" class="mb-4 opacity-50">
+            <img src="assets/logo.svg" alt="Aqif Ahmed" height="30" class="mb-4 opacity-50">
             <div class="d-flex justify-content-center gap-4 mb-4">
-                <a href="#" class="text-white fs-4"><i class="fab fa-github"></i></a>
-                <a href="#" class="text-white fs-4"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="text-white fs-4"><i class="fab fa-twitter"></i></a>
+                <a href="https://github.com/AqifAhmed" class="text-white fs-4" target="_blank"><i
+                        class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/aqifahmed/" class="text-white fs-4" target="_blank"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://x.com/aqif__ahmed" class="text-white fs-4" target="_blank"><i
+                        class="fab fa-twitter"></i></a>
             </div>
-            <p class="text-muted small">&copy; 2026 Æ Portfolio. All Rights Reserved.</p>
+            <p class="text-muted small">&copy; 2026 Aqif Ahmed Portfolio. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -148,6 +145,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/blog-data.js"></script>
+    <script src="js/latest-blog.js"></script>
     <script src="js/main.js"></script>
 </body>
 
