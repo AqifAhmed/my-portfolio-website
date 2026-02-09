@@ -245,6 +245,10 @@ a.btn-pixelated:hover {
     border-color: var(--accent-color);
 }
 
+.project-card .card-title {
+    color: var(--accent-color);
+}
+
 /* Initial States for Animations */
 .reveal-text,
 .reveal-up,
