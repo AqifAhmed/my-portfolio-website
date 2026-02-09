@@ -1,0 +1,48 @@
+<svg width="300" height="60" viewBox="0 0 300 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Tech/Cyberpunk Background Elements -->
+    <path d="M10 50 L20 50 L25 45" stroke="#333" stroke-width="2"/>
+    <rect x="270" y="45" width="20" height="2" fill="#FF0033" opacity="0.8"/>
+    <rect x="270" y="50" width="10" height="2" fill="#FF0033" opacity="0.5"/>
+    
+    <!-- Glitch/Tech Accents -->
+    <rect x="5" y="15" width="2" height="10" fill="#FF0033"/>
+    <path d="M295 10 L285 10" stroke="#333" stroke-width="2"/>
+
+    <!-- Main Text Construction "AQIF AHMED" -->
+    <!-- Using a geometric, custom font construction approximation -->
+    
+    <g transform="translate(15, 10)">
+        <!-- A -->
+        <path d="M10 40 L20 10 L30 40 M15 28 L25 28" stroke="white" stroke-width="3" stroke-linecap="square"/>
+        <!-- Q (Custom square style) -->
+        <path d="M40 10 L60 10 L60 35 L40 35 Z M55 30 L65 42" stroke="white" stroke-width="3" fill="none"/>
+        <!-- I -->
+        <path d="M75 10 L75 40" stroke="white" stroke-width="3"/>
+        <!-- F -->
+        <path d="M90 10 L90 40 M90 10 L110 10 M90 25 L105 25" stroke="white" stroke-width="3"/>
+        
+        <!-- Space -->
+        
+        <!-- A -->
+        <path d="M130 40 L140 10 L150 40 M135 28 L145 28" stroke="white" stroke-width="3"/>
+        <!-- H -->
+        <path d="M160 10 L160 40 M180 10 L180 40 M160 25 L180 25" stroke="white" stroke-width="3"/>
+        <!-- M -->
+        <path d="M190 40 L190 10 L205 25 L220 10 L220 40" stroke="white" stroke-width="3" stroke-linejoin="bevel"/>
+        <!-- E -->
+        <path d="M235 10 L235 40 L255 40 M235 10 L255 10 M235 25 L250 25" stroke="white" stroke-width="3"/>
+        <!-- D -->
+        <path d="M265 10 L265 40 L280 35 L280 15 L265 10" stroke="white" stroke-width="3"/>
+    </g>
+
+    <!-- Red Underline accent -->
+    <path d="M15 55 L285 55" stroke="url(#paint0_linear)" stroke-width="1"/>
+    
+    <defs>
+        <linearGradient id="paint0_linear" x1="15" y1="55" x2="285" y2="55" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#FF0033" stop-opacity="0"/>
+            <stop offset="0.5" stop-color="#FF0033"/>
+            <stop offset="1" stop-color="#FF0033" stop-opacity="0"/>
+        </linearGradient>
+    </defs>
+</svg>
