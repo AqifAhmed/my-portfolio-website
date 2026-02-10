@@ -121,7 +121,7 @@ h6 {
 
 .scroll-down {
     position: absolute;
-    bottom: 30px;
+    bottom: 80px;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
@@ -448,5 +448,43 @@ td.ContributionCalendar-day {
 
     table.ContributionCalendar-grid {
         border-spacing: 2px !important;
+    }
+}
+
+/* Mobile calendar: horizontal scroll */
+@media (max-width: 991px) {
+    .calendar-wrapper {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        /* create context for scrolling */
+        display: block;
+        width: 100%;
+    }
+
+    /* Ensure day squares stay perfectly square */
+    td.ContributionCalendar-day {
+        aspect-ratio: 1 / 1 !important;
+        /* minimal width to prevent squashing if user forces */
+        min-width: 10px;
+    }
+
+    /* Sticky day labels (Mon/Wed/Fri) so they don't scroll away */
+    .calendar tbody td.ContributionCalendar-label {
+        position: sticky !important;
+        left: 0;
+        z-index: 10;
+        background-color: var(--bg-color) !important;
+        font-size: 9px !important;
+        padding-right: 4px !important;
+    }
+
+    /* Force width to enable scrolling */
+    .calendar,
+    .calendar-graph,
+    .calendar table,
+    .calendar svg {
+        min-width: 750px !important;
+        max-width: none !important;
+        width: auto !important;
     }
 }

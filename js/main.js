@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize GitHub Calendar
     GitHubCalendar(".calendar", "AqifAhmed", {
-        responsive: true,
+        responsive: false,
         tooltips: true
     }).then(function () {
         console.log("GitHub Calendar loaded.");
@@ -106,9 +106,37 @@ document.addEventListener('DOMContentLoaded', () => {
                     seenMonths[text] = label;
                 }
             });
+
+            // Mobile: scroll to end (latest months) automatically
+            scrollToEnd();
+            window.addEventListener('resize', scrollToEnd);
         }
     }).catch(function (e) {
         console.error("GitHub Calendar failed to load:", e);
         document.querySelector(".calendar").innerHTML = "<p class='text-center text-muted'>Unable to load GitHub data.</p>";
     });
+
+    /**
+     * On mobile, the calendar is scrollable horizontally.
+     * This function scrolls it to the far right so the latest months are visible.
+     */
+    function scrollToEnd() {
+        var wrapper = document.querySelector('.calendar-wrapper');
+        if (wrapper && window.innerWidth <= 991) {
+            wrapper.scrollLeft = wrapper.scrollWidth;
+        }
+    }
+
+    // Auto-close mobile menu when a link is clicked
+    var navbarCollapse = document.getElementById('navbarNav');
+    if (navbarCollapse) {
+        var bsCollapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapse, { toggle: false });
+        document.querySelectorAll('.navbar-nav .nav-link').forEach(function (link) {
+            link.addEventListener('click', function () {
+                if (navbarCollapse.classList.contains('show')) {
+                    bsCollapse.hide();
+                }
+            });
+        });
+    }
 });
