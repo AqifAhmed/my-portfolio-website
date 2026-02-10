@@ -20,8 +20,11 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- GitHub Calendar CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css" />
+
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=13">
 </head>
 
 <body>
@@ -39,7 +42,8 @@
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link active" href="/#hero">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="/#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/#showcase">Project</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#coding-profile">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#showcase">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="/blogs/">Blogs</a></li>
                 </ul>
             </div>
@@ -105,18 +109,86 @@
                         </div>
                     </div>
 
-                    <!-- LeetCode Stats -->
-                    <div class="row mt-4 reveal-up justify-content-center">
-                        <div class="col-auto">
-                            <a href="https://leetcode.com/u/AqifAhmed/" target="_blank" id="leetcode-badge"
-                                class="btn btn-pixelated btn-sm d-inline-flex align-items-center gap-2 text-decoration-none"
-                                style="font-size: 0.9rem;">
-                                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/leetcode.svg"
-                                    alt="LeetCode" width="18" height="18" style="filter: invert(1);">
-                                <span>Problems Solved: <span id="leetcode-solved"
-                                        class="fw-bold">Loading...</span></span>
-                            </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coding Profile Section -->
+    <section id="coding-profile" class="py-5 bg-darker">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="display-3 fw-bold reveal-up">Coding <span class="text-accent">Profile</span></h2>
+                <p class="lead text-muted reveal-up">My contributions and problem-solving journey.</p>
+            </div>
+
+            <div class="row g-4 align-items-stretch reveal-up">
+                <!-- GitHub Calendar (8 cols) -->
+                <div class="col-lg-8">
+                    <div
+                        class="calendar-container p-4 border border-secondary rounded-3 position-relative h-100 d-flex flex-column hover-fill">
+                        <div class="text-center mb-3">
+                            <i class="fab fa-github fa-2x mb-2 text-white"></i>
+                            <h3 class="h4 m-0">GitHub Contributions</h3>
                         </div>
+                        <div
+                            class="calendar-wrapper flex-grow-1 d-flex align-items-center justify-content-center overflow-hidden">
+                            <div class="calendar">
+                                Loading the data just for you.
+                            </div>
+                        </div>
+                        <a href="https://github.com/AqifAhmed" target="_blank" class="stretched-link"></a>
+                    </div>
+                </div>
+
+                <!-- LeetCode Stats (4 cols) -->
+                <div class="col-lg-4">
+                    <div
+                        class="leetcode-card h-100 p-4 border border-secondary rounded-3 hover-fill position-relative d-flex flex-column justify-content-center align-items-center">
+                        <div class="text-center mb-4">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/leetcode.svg" alt="LeetCode"
+                                width="48" height="48" style="filter: invert(1);">
+                            <h3 class="h4 mt-3">LeetCode Stats</h3>
+                        </div>
+
+                        <!-- Solved Count -->
+                        <div class="text-center mb-4">
+                            <span class="display-4 fw-bold text-accent" id="leetcode-total">0</span>
+                            <p class="text-muted small text-uppercase">Total Solved</p>
+                        </div>
+
+                        <!-- Breakdown -->
+                        <div class="w-100">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-success small fw-bold">Easy</span>
+                                <span id="leetcode-easy" class="fw-bold">0</span>
+                            </div>
+                            <div class="progress mb-3" style="height: 6px; background-color: #333;">
+                                <div id="leetcode-easy-bar" class="progress-bar bg-success" role="progressbar"
+                                    style="width: 0%"></div>
+                            </div>
+
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-warning small fw-bold">Medium</span>
+                                <span id="leetcode-medium" class="fw-bold">0</span>
+                            </div>
+                            <div class="progress mb-3" style="height: 6px; background-color: #333;">
+                                <div id="leetcode-medium-bar" class="progress-bar bg-warning" role="progressbar"
+                                    style="width: 0%"></div>
+                            </div>
+
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-danger small fw-bold">Hard</span>
+                                <span id="leetcode-hard" class="fw-bold">0</span>
+                            </div>
+                            <div class="progress" style="height: 6px; background-color: #333;">
+                                <div id="leetcode-hard-bar" class="progress-bar bg-danger" role="progressbar"
+                                    style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <a href="https://leetcode.com/u/AqifAhmed/" target="_blank" class="stretched-link"></a>
                     </div>
                 </div>
             </div>
@@ -127,7 +199,7 @@
     <section id="showcase" class="py-5 position-relative">
         <div class="container py-5">
             <div class="text-center mb-5">
-                <h2 class="display-3 fw-bold reveal-up">Latest <span class="text-accent">Blog</span></h2>
+                <h2 class="display-3 fw-bold reveal-up">Latest <span class="text-accent">Project</span></h2>
             </div>
 
             <div id="showcase-content" class="project-card reveal-scale">
@@ -159,6 +231,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- GitHub Calendar JS -->
+    <script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"></script>
     <script src="js/blog-data.js"></script>
     <script src="js/latest-blog.js"></script>
     <script src="js/leetcode-stats.js"></script>

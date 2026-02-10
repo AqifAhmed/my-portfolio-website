@@ -300,3 +300,153 @@ a.btn-pixelated:hover {
         font-size: 2.5rem;
     }
 }
+
+/* Coding Profile & GitHub Calendar */
+#coding-profile {
+    position: relative;
+}
+
+/* Override the library's CSS variables for day colors */
+.calendar {
+    --color-calendar-graph-day-bg: #222 !important;
+    --color-calendar-graph-day-L1-bg: rgba(255, 0, 51, 0.4) !important;
+    --color-calendar-graph-day-L2-bg: rgba(255, 0, 51, 0.6) !important;
+    --color-calendar-graph-day-L3-bg: rgba(255, 0, 51, 0.8) !important;
+    --color-calendar-graph-day-L4-bg: #ff0033 !important;
+
+    font-family: var(--font-main) !important;
+    color: var(--text-color) !important;
+    border: none !important;
+    background: transparent !important;
+    min-height: auto !important;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* Calendar container card */
+.calendar-container {
+    background-color: transparent;
+    transition: border-color 0.3s ease;
+}
+
+.calendar-container:hover {
+    border-color: var(--accent-color) !important;
+}
+
+/* Calendar wrapper */
+.calendar-wrapper {
+    position: relative;
+    overflow: auto;
+}
+
+/* Hide unwanted elements: stats, footer, legend, links, headings */
+.calendar .contrib-footer,
+.calendar .contrib-legend,
+.calendar .contrib-column,
+.calendar .contrib-number,
+.calendar .text-small,
+.calendar .float-left.text-gray,
+.calendar .left.text-muted,
+.calendar .monospace,
+.calendar .width-full>.float-left,
+.calendar h2,
+.calendar div.px-md-5,
+.calendar div.float-right,
+.calendar #user-activity-overview {
+    display: none !important;
+}
+
+/* Calendar graph padding */
+.calendar-graph {
+    padding: 0 !important;
+}
+
+/* Table cells: spacing between day squares */
+table.ContributionCalendar-grid {
+    border-spacing: 3px !important;
+    border-collapse: separate !important;
+}
+
+table.ContributionCalendar-grid td {
+    padding: 0 !important;
+    border: none !important;
+}
+
+/* Contribution day squares */
+td.ContributionCalendar-day {
+    width: 10px !important;
+    height: 10px !important;
+    aspect-ratio: 1 / 1 !important;
+    border-radius: 2px !important;
+    border: none !important;
+    outline: none !important;
+}
+
+/* Remove any inner borders from the calendar widget */
+.calendar *,
+.calendar-graph * {
+    border: none !important;
+}
+
+/* Restore only the outer container border */
+.calendar-container {
+    border: 1px solid var(--bs-secondary) !important;
+}
+
+.calendar-container:hover {
+    border-color: var(--accent-color) !important;
+}
+
+/* LeetCode Card Hover Effect */
+.leetcode-card {
+    transition: border-color 0.3s ease;
+}
+
+.leetcode-card:hover {
+    border-color: var(--accent-color) !important;
+}
+
+/* ===== Mobile Responsiveness for Coding Profile ===== */
+@media (max-width: 991px) {
+    #coding-profile .row {
+        flex-direction: column;
+    }
+
+    #coding-profile .col-lg-8,
+    #coding-profile .col-lg-4 {
+        width: 100%;
+    }
+
+    .calendar-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .calendar-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        justify-content: flex-start !important;
+    }
+}
+
+@media (max-width: 575px) {
+    #coding-profile .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .calendar-container {
+        padding: 15px !important;
+    }
+
+    td.ContributionCalendar-day {
+        width: 8px !important;
+        height: 8px !important;
+        min-width: 8px !important;
+        min-height: 8px !important;
+    }
+
+    table.ContributionCalendar-grid {
+        border-spacing: 2px !important;
+    }
+}
