@@ -139,4 +139,33 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // On mobile/touch: let the btn-pixelated fill animation play before navigating
+    document.addEventListener('click', function (e) {
+        var btn = e.target.closest('a.btn-pixelated');
+        if (!btn) return;
+
+        // Only delay on touch devices (mobile)
+        if (!('ontouchstart' in window)) return;
+
+        var href = btn.getAttribute('href');
+        if (!href || href === '#') return;
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        // Trigger the hover/fill animation
+        btn.classList.add('btn-pixelated--active');
+
+        // Wait for the CSS transition (300ms) to finish, then navigate
+        setTimeout(function () {
+            var target = btn.getAttribute('target');
+            if (target === '_blank') {
+                window.open(href, '_blank');
+            } else {
+                window.location.href = href;
+            }
+            btn.classList.remove('btn-pixelated--active');
+        }, 350);
+    }, true);
 });
