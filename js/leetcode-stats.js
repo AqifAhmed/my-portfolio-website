@@ -22,18 +22,16 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             if (data && data.solvedProblem !== undefined) {
                 // Update Numbers
-                totalEl.textContent = data.solvedProblem;
-                easyEl.textContent = data.easySolved;
-                mediumEl.textContent = data.mediumSolved;
-                hardEl.textContent = data.hardSolved;
+                totalEl.textContent = data.solvedProblem !== undefined && data.solvedProblem !== null ? data.solvedProblem : 0;
+                easyEl.textContent = data.easySolved !== undefined && data.easySolved !== null ? data.easySolved : 0;
+                mediumEl.textContent = data.mediumSolved !== undefined && data.mediumSolved !== null ? data.mediumSolved : 0;
+                hardEl.textContent = data.hardSolved !== undefined && data.hardSolved !== null ? data.hardSolved : 0;
 
-                // Update Progress Bars (assuming total questions roughly... or just relative to total solved? 
-                // Creating a visual bar relative to total solved is nice, or relative to fixed numbers.
-                // Let's use percentage of *solved* for the bar width to show distribution of effort.
-                const total = data.solvedProblem > 0 ? data.solvedProblem : 1;
-                easyBar.style.width = `${(data.easySolved / total) * 100}%`;
-                mediumBar.style.width = `${(data.mediumSolved / total) * 100}%`;
-                hardBar.style.width = `${(data.hardSolved / total) * 100}%`;
+                // Update Progress Bars
+                const total = (data.solvedProblem !== undefined && data.solvedProblem !== null && data.solvedProblem > 0) ? data.solvedProblem : 1;
+                easyBar.style.width = `${((data.easySolved || 0) / total) * 100}%`;
+                mediumBar.style.width = `${((data.mediumSolved || 0) / total) * 100}%`;
+                hardBar.style.width = `${((data.hardSolved || 0) / total) * 100}%`;
 
                 // Animate Total
                 gsap.from(totalEl, {
@@ -42,10 +40,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     ease: "power1.out",
                     snap: { textContent: 1 }
                 });
+            } else {
+                console.error('LeetCode API returned invalid data:', data);
+                // Fallback if data is not as expected
+                totalEl.textContent = '-';
+                easyEl.textContent = '-';
+                mediumEl.textContent = '-';
+                hardEl.textContent = '-';
             }
         })
         .catch(error => {
             console.error('Error fetching LeetCode stats:', error);
             totalEl.textContent = '-';
+            easyEl.textContent = '-';
+            mediumEl.textContent = '-';
+            hardEl.textContent = '-';
         });
 });
